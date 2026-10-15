@@ -1,0 +1,279 @@
+QUESTION 1
+
+Explain how inheritance enables specialized classes to reuse existing behavior from a base class and simultaneously extend or modify that behavior to suit their specific needs. Provide a concrete business example.
+
+Answer:
+Inheritance is an OOP concept in which a derived class acquires the properties and methods of a base class. It allows code reuse and enables derived classes to add new features or override existing methods.
+
+Example: In a payment system, a Payment base class contains a processPayment() method. CardPayment and WalletPayment inherit this method and can override it to implement their specific payment procedures.
+
+Thus, inheritance reduces code duplication and supports specialization.
+
+
+
+
+QUESTION 2
+
+Describe the 'is-a' relationship in the context of object-oriented programming. Explain why correctly identifying a genuine 'is-a' relationship is crucial when deciding to use inheritance in a class design.
+
+Answer:
+The is-a relationship means that an object of a derived class is also an instance of its base class.
+
+Examples:
+1. A Car is a Vehicle.
+2. A Dog is an Animal.
+3. A Circle is a Shape.
+
+Inheritance is appropriate when a genuine is-a relationship exists because it ensures that derived objects can be treated as base-class objects. Incorrect inheritance creates tight coupling, reduces flexibility, and makes the design difficult to maintain.
+
+
+
+
+
+QUESTION 3
+
+Define method overriding. Using a realistic business scenario, such as different types of Employee objects calculating their salary differently, illustrate how method overriding allows derived classes to provide their own specific implementations for a method defined in their base class.
+
+Answer:
+Method overriding occurs when a derived class provides its own implementation of a method already defined in its base class, using the same method signature.
+
+Example:
+
+class Employee {
+    double calculateSalary() {
+        return 20000;
+    }
+}
+
+class Manager extends Employee {
+    @Override
+    double calculateSalary() {
+        return 50000;
+    }
+}
+
+class Developer extends Employee {
+    @Override
+    double calculateSalary() {
+        return 35000;
+    }
+}
+
+Here, Manager and Developer override calculateSalary() to calculate their salaries differently. This allows each employee type to have its own specific behavior.
+
+
+
+
+
+QUESTION 4
+
+Explain the concept of runtime polymorphism (dynamic dispatch) when working with common base-type references. How does the system determine which specific method implementation to execute when a method is called on a base-type reference that actually points to a derived class object?
+
+Answer:
+Runtime polymorphism is the ability of a base-class reference to call an overridden method of the actual derived-class object it refers to. The method implementation is selected at runtime through dynamic method dispatch.
+
+Example:
+
+class Animal {
+    void makeSound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.makeSound();
+    }
+}
+
+Output:
+Woof
+
+Although a is an Animal reference, it refers to a Dog object. Java executes the overridden makeSound() method in Dog at runtime.
+
+
+
+
+
+QUESTION 5
+
+Describe how polymorphic collections work. Provide an example of a collection (e.g., a list or array) that holds objects of a common base type, but where the actual objects are instances of different derived types. Explain the advantages of using such a collection for processing diverse but related objects.
+
+Answer:
+A polymorphic collection stores objects of different derived classes using references to a common base class. Each object can execute its own overridden methods when processed through the common reference.
+
+Example:
+
+Animal[] animals = {
+    new Dog(),
+    new Cat()
+};
+
+for (Animal a : animals) {
+    a.makeSound();
+}
+
+Advantages:
+1. Simplifies processing different related objects.
+2. Reduces repeated conditional statements.
+3. Supports runtime polymorphism.
+4. Makes adding new derived classes easier.
+5. Improves code reusability and maintainability.
+
+
+
+
+
+QUESTION 6
+
+Compare and contrast solving problems using polymorphism (specifically, method overriding with a common base type) versus using repeated type-based conditional logic (e.g., if-else if or switch statements). Explain why polymorphism is generally preferred for managing varying behavior among related objects.
+
+Answer:
+Polymorphism allows objects to execute their own overridden methods through a common base-class reference. Type-based conditional logic checks the object's type using if-else or switch statements before executing the appropriate behavior.
+
+Example: In a payment system, polymorphism allows each payment type to implement calculateFee() independently. The main program simply calls payment.calculateFee().
+
+Using repeated conditionals requires adding another condition whenever a new payment type is introduced.
+
+Polymorphism is generally preferred because it reduces conditional logic, improves readability, supports extensibility, and simplifies maintenance.
+
+
+
+
+
+
+QUESTION 7
+
+Explain how the principles of inheritance and polymorphism allow for the addition of new derived types to an existing design with minimal or no changes to the common processing logic that operates on the base type. Illustrate this with an example where a new PaymentMethod is introduced into a payment processing system.
+
+Answer:
+Inheritance allows new classes to acquire common properties and methods from a base class. Polymorphism allows the existing system to process new derived objects through base-class references without changing the common processing logic.
+
+Example:
+
+abstract class PaymentMethod {
+    abstract void pay();
+}
+
+class CardPayment extends PaymentMethod {
+    void pay() {
+        System.out.println("Paid by card");
+    }
+}
+
+class WalletPayment extends PaymentMethod {
+    void pay() {
+        System.out.println("Paid by wallet");
+    }
+}
+
+The payment processor can call pay() on any PaymentMethod reference. If a new UPIPayment class is added, it only needs to extend PaymentMethod and implement pay(). The existing processing loop remains unchanged.
+
+This improves extensibility and follows the Open-Closed Principle.
+
+
+
+
+
+
+QUESTION 8
+
+Distinguish between inherited behavior and overridden behavior in object-oriented programming. When would a derived class typically inherit a method, and when would it typically override a method? Provide examples for each.
+
+Answer:
+Inherited behavior occurs when a derived class uses a method from its base class without providing a new implementation.
+
+Example: A Vehicle class defines displayBrand(). The Car class inherits this method because displaying the brand works the same way for both.
+
+Overridden behavior occurs when a derived class provides its own implementation of a base-class method.
+
+Example: A Vehicle class defines startEngine(). The Car and Motorcycle classes override this method to implement their own starting behavior.
+
+A derived class inherits a method when the existing behavior is suitable. It overrides a method when specialized behavior is required.
+
+
+
+
+
+QUESTION 9
+
+Explain why using inheritance solely for the sake of code reuse, particularly when there is no genuine 'is-a' relationship between the classes, can be an inappropriate design choice. Discuss the potential negative consequences of such a design.
+
+Answer:
+Inheritance should represent a genuine is-a relationship rather than being used only to reuse code.
+
+Example: A HelperUtility should not inherit from Calculator simply to reuse its methods because a utility is not a calculator.
+
+Using inappropriate inheritance can cause:
+
+1. Tight coupling: Changes in the base class may affect derived classes.
+2. Incorrect relationships: The class hierarchy does not represent real-world meaning.
+3. Reduced flexibility: Derived classes may inherit unnecessary methods and properties.
+4. Maintenance difficulties: The design becomes harder to understand and modify.
+
+Composition is often a better choice when one class needs to use the functionality of another unrelated class.
+
+
+
+
+
+QUESTION 10
+
+Analyze a scenario, such as a VehicleRental system dealing with CarRental and TruckRental, to identify both the common behaviors shared across all rentals and the specialized behaviors unique to each type of rental. Explain how inheritance can be used to model this distinction effectively.
+
+Answer:
+In a VehicleRental system, CarRental and TruckRental share common rental operations but may have different pricing rules.
+
+Common behaviors in the VehicleRental base class:
+1. Store rental duration.
+2. Store customer details.
+3. Calculate the rental cost through a common method.
+4. Display rental information.
+
+Specialized behaviors:
+1. CarRental calculates fees based on the car's daily rate and optional features.
+2. TruckRental calculates fees based on the truck's daily rate and load capacity.
+
+Example:
+
+abstract class VehicleRental {
+    int days;
+
+    VehicleRental(int days) {
+        this.days = days;
+    }
+
+    abstract double calculateCost();
+}
+
+class CarRental extends VehicleRental {
+    CarRental(int days) {
+        super(days);
+    }
+
+    double calculateCost() {
+        return days * 50.0;
+    }
+}
+
+class TruckRental extends VehicleRental {
+    TruckRental(int days) {
+        super(days);
+    }
+
+    double calculateCost() {
+        return days * 100.0;
+    }
+}
+
+Here, CarRental and TruckRental inherit common rental information from VehicleRental and override calculateCost() to apply their specific pricing rules.
+
+This design reduces code duplication, supports runtime polymorphism, and makes adding new rental types easier.

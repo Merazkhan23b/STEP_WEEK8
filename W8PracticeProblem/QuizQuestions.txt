@@ -1,0 +1,96 @@
+Question 1
+A system processes Document objects. It initially had PDFDocument and WordDocument classes, both inheriting from Document and implementing a render() method. A developer observes repeated if-else if blocks checking the document type before calling render(). What is the most appropriate OOP principle to apply to eliminate this conditional logic?
+A. Encapsulation
+B. Method overloading
+C. Polymorphism
+D. Abstraction
+Answer: C. Polymorphism
+
+
+
+Question 2
+Which of the following scenarios represent a genuine 'is-a' relationship, making inheritance a suitable design choice? (Select all that apply)
+A. A Car is a Vehicle.
+B. A Rectangle is a Shape.
+C. A DatabaseConnection is a NetworkResource.
+D. A HelperUtility contains a Calculator.
+Answer: A, B, C
+
+
+
+Question 3
+Consider a Vehicle base class with a method startEngine() and two derived classes, Car and Motorcycle, both overriding startEngine() with their specific engine start sounds. If you have a list of Vehicle objects, some being Car instances and some Motorcycle instances, and you iterate through this list calling startEngine() on each object, what mechanism ensures the correct startEngine() implementation is called for each vehicle type?
+A. Static method binding
+B. Compile-time polymorphism
+C. Runtime method dispatch
+D. Method overloading
+Answer: C. Runtime method dispatch
+
+
+Question 4
+A Shape base class has a method calculateArea(). Circle and Rectangle are derived classes, each with their own implementation of calculateArea(). If a program stores various Shape objects in a list and then calls calculateArea() on each, what concept is being demonstrated?
+A. Method hiding
+B. Method overloading
+C. Inheritance-based polymorphism
+D. Composition
+Answer: C. Inheritance-based polymorphism
+
+
+
+Question 5
+A software component is designed to manage various LibraryItem types like Book and DVD. Both Book and DVD inherit from LibraryItem. The LibraryItem class has a getLoanPeriod() method. The Book class extends this method by adding a special rule for new releases, while the DVD class sets a fixed loan period. Which of the following statements accurately describe the behavior in this system? (Select all that apply)
+A. getLoanPeriod() in Book is an example of extending inherited behavior.
+B. getLoanPeriod() in DVD is an example of shared behavior.
+C. The LibraryItem class defines the common behavior for all library items.
+D. A DVD object can be processed as a LibraryItem through a common reference.
+Answer: A, C, D
+
+
+
+Question 6
+Consider a base class Animal with a method makeSound() and derived classes Dog and Cat, which override makeSound() to produce 'Woof' and 'Meow' respectively. Which of the following statements about the behavior of these classes are correct? (Select all that apply)
+A. If a Dog object is referred to by an Animal reference, calling makeSound() will execute Dog's makeSound().
+B. The makeSound() method in Animal is an example of specialized behavior.
+C. The makeSound() method in Dog is an example of overridden behavior.
+D. New behavior can only be added to derived classes if it is also declared in the base class.
+Answer: A, C
+
+
+
+Question 7
+A PaymentProcessor system processes CardPayment and BankTransferPayment objects. Both CardPayment and BankTransferPayment derive from a Payment base class and override a calculateFee() method. If the PaymentProcessor maintains a collection of Payment references, what is the primary benefit of this design when adding a new WalletPayment type?
+A. It reduces the need for new data members in the base class.
+B. It ensures all payment types use the same fee calculation logic.
+C. It allows adding WalletPayment without modifying the existing PaymentProcessor's iteration logic.
+D. It enhances the security of payment transactions.
+Answer: C. It allows adding WalletPayment without modifying the existing PaymentProcessor's iteration logic.
+
+
+
+Question 8
+What is the primary reason why using inheritance solely for superficial code reuse between unrelated classes is generally considered an inappropriate design choice?
+A. It leads to tighter coupling and incorrect 'is-a' relationships, making the design rigid.
+B. It always results in slower program execution due to increased overhead.
+C. It complicates debugging by creating too many small classes.
+D. It prevents the use of interfaces in the system.
+Answer: A. It leads to tighter coupling and incorrect 'is-a' relationships, making the design rigid.
+
+
+
+Question 9
+A Notification base class has a send() method. Derived classes EmailNotification, SMSNotification, and PushNotification each override send() to implement channel-specific delivery logic. What are the advantages of using inheritance and polymorphism in this notification system design? (Select all that apply)
+A. It allows a generic NotificationSender to send various types of notifications without knowing their concrete types.
+B. It centralizes all notification logic into a single Notification class, reducing code duplication across derived classes.
+C. It simplifies the process of adding a new notification channel, like InAppNotification, without altering existing sender logic.
+D. It ensures that all notification types use the exact same send() implementation, regardless of the channel.
+Answer: A, C
+
+
+
+Question 10
+Which of the following are benefits of using polymorphic collections (e.g., a list of base class references holding derived class objects)? (Select all that apply)
+A. It simplifies iterating over diverse but related objects.
+B. It allows for uniform processing of objects with specialized behavior.
+C. It reduces the need for explicit type casting in common processing loops.
+D. It makes it harder to add new derived types to the system.
+Answer: A, B, C
